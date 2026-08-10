@@ -108,19 +108,20 @@ class TrafficSimulation:
         pygame.display.set_caption("Dynamic AV Traffic Simulator")
         clock = pygame.time.Clock()
         
-        font = pygame.font.SysFont("segoeui, arial", 26, bold=True)
-        small_font = pygame.font.SysFont("segoeui, arial", 16, bold=True)
-        log_font = pygame.font.SysFont("consolas, courier", 14)
+        # High quality modern fonts
+        font = pygame.font.SysFont("segoeui, -apple-system, blinkmacsystemfont, roboto", 22, bold=True)
+        small_font = pygame.font.SysFont("segoeui, -apple-system, blinkmacsystemfont, roboto", 15, bold=True)
+        log_font = pygame.font.SysFont("consolas, courier", 13)
 
         while self.running:
-            # Clean Map-like background (Light light gray)
-            screen.fill((240, 244, 248))
+            # Ultra-premium dark slate background (Vercel/Apple dark mode style)
+            screen.fill((15, 15, 20))
             
             with self.lock:
                 if self._spawn_queue:
                     self._spawn_timer += 1
-                    # Spawn next vehicle every 50 frames (nearly a full second) so user can see it spawn
-                    if self._spawn_timer >= 50:
+                    # Spawn next vehicle roughly every 1.5 seconds, ensuring huge gap between them
+                    if self._spawn_timer >= 90:
                         self._spawn_timer = 0
                         item = self._spawn_queue.pop(0)
 
@@ -184,48 +185,50 @@ class TrafficSimulation:
                                 
                 self.vehicles = [v for v in self.vehicles if not v.done]
             
+            # Render edges (Roads)
             for u, v in self.graph.edges():
                 start_pos = self.graph.nodes[u]['pos']
                 end_pos = self.graph.nodes[v]['pos']
                 
-                # Asphalt road color base
-                base_color = (203, 213, 225) # Light gray roads
                 edge_flow = active_flows.get((u, v), 0)
                 
+                # Dynamic congestion color scaling (Slate -> Warning Orange/Red)
                 ratio = min(edge_flow / 25.0, 1.0)
                 if ratio > 0:
-                    r = int(203 + (239 - 203) * ratio)
-                    g = int(213 + (68 - 213) * ratio)
-                    b = int(225 + (68 - 225) * ratio)
+                    r = int(51 + (239 - 51) * ratio)
+                    g = int(65 + (68 - 65) * ratio)
+                    b = int(85 + (68 - 85) * ratio)
                     road_color = (r, g, b)
                 else:
-                    road_color = base_color
+                    road_color = (51, 65, 85) # Base dark blue/gray
                     
                 # Clean simple thick lines for roads
-                pygame.draw.line(screen, (148, 163, 184), start_pos, end_pos, 16) # Road Border
-                pygame.draw.line(screen, road_color, start_pos, end_pos, 14)    # Road fill
+                pygame.draw.line(screen, (30, 30, 40), start_pos, end_pos, 16) # Outer shadow/border
+                pygame.draw.line(screen, road_color, start_pos, end_pos, 8)    # Core lane
                 
-                # Simple elegant hover text without ugly box
                 current_cost = calculate_edge_cost(self.graph, u, v, edge_flow)
                 mid_x = (start_pos[0] + end_pos[0]) // 2
-                # Shift text significantly higher to avoid any overlap with the road or cars
-                mid_y = (start_pos[1] + end_pos[1]) // 2 - 38
+                mid_y = (start_pos[1] + end_pos[1]) // 2 - 30
                 
-                cost_text = small_font.render(f"Delay: {current_cost:.1f}s", True, (71, 85, 105)) # Slate text
+                # Ultra clean text with no box, just a shadow for contrast
+                cost_text = small_font.render(f"Delay: {current_cost:.1f}s", True, (226, 232, 240))
+                # Shadow text
+                shadow_text = small_font.render(f"Delay: {current_cost:.1f}s", True, (0, 0, 0))
+                
                 text_rect = cost_text.get_rect(center=(mid_x, mid_y))
-                # Soft white halo behind text for readability natively
-                pygame.draw.rect(screen, (255,255,255), text_rect.inflate(8,4), border_radius=4)
+                screen.blit(shadow_text, (text_rect.x, text_rect.y + 2))
                 screen.blit(cost_text, text_rect)
                 
-            # Draw premium nodes
+            # Draw sleek nodes
             for n in self.graph.nodes():
                 pos = self.graph.nodes[n]['pos']
-                pygame.draw.circle(screen, (255, 255, 255), pos, 22) # White rim
-                pygame.draw.circle(screen, (51, 65, 85), pos, 18)   # Solid center
-                text = font.render(n, True, (255, 255, 255))
+                pygame.draw.circle(screen, (15, 15, 20), pos, 24) # Cutout background
+                pygame.draw.circle(screen, (56, 189, 248), pos, 22, 3) # Neon thin ring
+                
+                text = font.render(n, True, (248, 250, 252))
                 screen.blit(text, text.get_rect(center=pos))
                 
-            # Draw 2.5D Cars
+            # Draw Sleek Chevron Cars (Arrows)
             for v in self.vehicles:
                 p1 = v.path_nodes_pos[v.current_edge_index]
                 p2 = v.path_nodes_pos[v.current_edge_index + 1]
@@ -233,58 +236,65 @@ class TrafficSimulation:
                 cx = p1[0] + (p2[0] - p1[0]) * v.progress
                 cy = p1[1] + (p2[1] - p1[1]) * v.progress
                 
-                # Calculate angle for rotation
                 dx = p2[0] - p1[0]
                 dy = p2[1] - p1[1]
                 angle = math.atan2(dy, dx)
                 
-                # Colors
-                car_color = (14, 165, 233) if v.path_id == "Route 1 (Top)" else (236, 72, 153)
-                roof_color = (224, 242, 254) if v.path_id == "Route 1 (Top)" else (252, 231, 243)
+                color = (34, 211, 238) if v.path_id == "Route 1 (Top)" else (244, 114, 182) # Vibrant Cyan or Pink
                 
-                # Create a car surface to allow rotation
-                car_w, car_h = 24, 12
+                # Create a car surface for top-down rendering
+                car_w, car_h = 28, 14
                 car_surf = pygame.Surface((car_w, car_h), pygame.SRCALPHA)
                 
-                # Main body (Shadow box for 2.5D)
-                pygame.draw.rect(car_surf, (0, 0, 0, 50), (2, 2, car_w, car_h), border_radius=3)
-                # Main body color
-                pygame.draw.rect(car_surf, car_color, (0, 0, car_w, car_h), border_radius=3)
+                # 1. Wheels (4 dark rectangles)
+                wheel_color = (20, 20, 25)
+                pygame.draw.rect(car_surf, wheel_color, (4, 0, 6, 2))  # Back left
+                pygame.draw.rect(car_surf, wheel_color, (4, 12, 6, 2)) # Back right
+                pygame.draw.rect(car_surf, wheel_color, (18, 0, 6, 2)) # Front left
+                pygame.draw.rect(car_surf, wheel_color, (18, 12, 6, 2))# Front right
                 
-                # Roof (offset slightly back and up to give 2.5D illusion)
-                pygame.draw.rect(car_surf, (51, 65, 85), (6, 2, 8, 8), border_radius=2) # Windshield dark
-                pygame.draw.rect(car_surf, roof_color, (4, 3, 7, 6), border_radius=2)   # Roof light top
+                # 2. Chassis (Main colored body)
+                pygame.draw.rect(car_surf, color, (1, 1, 26, 12), border_radius=4)
                 
-                # Rotate and draw
+                # 3. Windshield/Windows (Dark tinted)
+                window_color = (15, 23, 42)
+                pygame.draw.rect(car_surf, window_color, (8, 2, 10, 10), border_radius=2)
+                
+                # 4. Roof (Lighter or same body color)
+                roof_color = (255, 255, 255) if color == (34, 211, 238) else (252, 165, 165)
+                pygame.draw.rect(car_surf, color, (10, 3, 6, 8), border_radius=1) 
+                
+                # 5. Headlights
+                pygame.draw.circle(car_surf, (253, 224, 71), (25, 3), 2)
+                pygame.draw.circle(car_surf, (253, 224, 71), (25, 11), 2)
+                
+                # Rotate and draw the car sprite
                 rotated_car = pygame.transform.rotate(car_surf, -math.degrees(angle))
                 car_rect = rotated_car.get_rect(center=(int(cx), int(cy)))
+                
                 screen.blit(rotated_car, car_rect)
             
-            # Clean UI Dashboard HUD
-            hud_bg = pygame.Surface((340, 240), pygame.SRCALPHA)
-            pygame.draw.rect(hud_bg, (255, 255, 255, 230), hud_bg.get_rect(), border_radius=12)
-            pygame.draw.rect(hud_bg, (203, 213, 225, 200), hud_bg.get_rect(), width=1, border_radius=12)
-            # Soft shadow
-            pygame.draw.rect(screen, (0, 0, 0, 10), hud_bg.get_rect(topleft=(22, 22)), border_radius=12)
+            # Ultra-modern minimalistic HUD
+            hud_bg = pygame.Surface((310, 240), pygame.SRCALPHA)
+            pygame.draw.rect(hud_bg, (20, 25, 35, 220), hud_bg.get_rect(), border_radius=16)
+            pygame.draw.rect(hud_bg, (50, 60, 80, 200), hud_bg.get_rect(), width=1, border_radius=16)
             screen.blit(hud_bg, (20, 20))
             
-            mode_color = (16, 185, 129) if self.mode == "cooperative" else (14, 165, 233)
+            mode_color = (16, 185, 129) if self.mode == "cooperative" else (56, 189, 248)
             text_mode = font.render(f"{self.mode.upper()}", True, mode_color)
             
-            text_flows = small_font.render(f"TOP ROUTE: {self.flows.get('Route 1 (Top)', 0)}  |  BOT ROUTE: {self.flows.get('Route 2 (Bot)', 0)}", True, (71, 85, 105))
-            text_active = small_font.render(f"ACTIVE VEHICLES: {len(self.vehicles)}", True, (71, 85, 105))
+            text_flows = small_font.render(f"TOP: {self.flows.get('Route 1 (Top)', 0)}    BOT: {self.flows.get('Route 2 (Bot)', 0)}", True, (241, 245, 249))
+            text_active = small_font.render(f"ACTIVE: {len(self.vehicles)} / {self.total_vehicles}", True, (241, 245, 249))
             
             screen.blit(text_mode, (40, 35))
-            screen.blit(text_flows, (40, 70))
-            screen.blit(text_active, (40, 95))
+            screen.blit(text_flows, (40, 65))
+            screen.blit(text_active, (40, 85))
             
-            # Terminal log (clean style)
-            pygame.draw.line(screen, (226, 232, 240), (40, 125), (320, 125)) # Divider
+            # Terminal log
+            pygame.draw.line(screen, (50, 60, 80), (40, 115), (290, 115)) 
             for i, line in enumerate(self.decision_logs):
-                # Bold title for decision, gray for evaluations
-                color = (234, 88, 12) if i == 0 else (100, 116, 139) 
-                sys_lbl = log_font.render(line, True, color) 
-                screen.blit(sys_lbl, (40, 135 + (i * 22)))
+                sys_lbl = log_font.render(line, True, (148, 163, 184) if i > 0 else (250, 204, 21)) 
+                screen.blit(sys_lbl, (40, 125 + (i * 20)))
             
             pygame.display.flip()
             clock.tick(60)

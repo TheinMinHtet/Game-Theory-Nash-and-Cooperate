@@ -39,14 +39,20 @@ def get_best_selfish_path(graph: nx.DiGraph, current_edge_flows: Dict[Tuple[str,
 def get_cooperative_distribution(total_vehicles: int) -> Dict[str, int]:
     """
     Calculates the System Optimum for N vehicles.
-    For Cost 1: 2x + 10
-    For Cost 2: 0.4x + 30
-    At 50 vehicles, System Optimum mathematically assigns flows to minimize total time:
-    Route 1: 20
-    Route 2: 30
-    (Simplified static allocation for optimal baseline comparison)
+    System Optimum minimizes Total Delay = x * Cost1(x) + y * Cost2(y)
+    Where Cost1 = (1.0x + 5) and Cost2 = (0.2y + 15)
+    Total Delay = x(1.0x + 5) + (N-x)(0.2(N-x) + 15)
+    Taking the derivative with respect to x and setting to 0 gives:
+    x = (10 + 0.4 * N) / 2.4
     """
+    optimum_x = (10 + 0.4 * total_vehicles) / 2.4
+    route_1_count = int(round(optimum_x))
+    
+    # Constrain within bounds
+    route_1_count = max(0, min(total_vehicles, route_1_count))
+    route_2_count = total_vehicles - route_1_count
+    
     return {
-        "Route 1 (Top)": 20,
-        "Route 2 (Bot)": 30
+        "Route 1 (Top)": route_1_count,
+        "Route 2 (Bot)": route_2_count
     }
