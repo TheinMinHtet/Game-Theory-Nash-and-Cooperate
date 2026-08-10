@@ -2,190 +2,190 @@
     "mode": "selfish",
     "total_vehicles": 30,
     "route_distribution": {
-        "Route 1 (Top)": 15,
-        "Route 2 (Bot)": 15
+        "Route 1 (Top)": 22,
+        "Route 2 (Bot)": 8
     },
-    "average_actual_time": 37.16279966036479,
+    "average_actual_time": 22.165322613716125,
     "vehicles": [
         {
-            "id": "2c22fa78-ff90-4b79-a757-04f76102faf9",
+            "id": "b8c34ac0-3706-45a5-9fd9-b9550916e9ef",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 12.0,
-            "actual_time_visual": 29.064386129379272
+            "actual_time_visual": 16.595378160476685
         },
         {
-            "id": "f090b533-0e60-4983-a495-55169ab0d807",
+            "id": "a5cffa7c-e99d-469d-8925-cfabb847c447",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 13.0,
-            "actual_time_visual": 34.36826944351196
+            "actual_time_visual": 19.28254199028015
         },
         {
-            "id": "5a3b3934-6bff-4b5e-92df-3319fa3d50d7",
+            "id": "5904f8b7-be96-443a-9798-20c73643c603",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 14.0,
-            "actual_time_visual": 38.0575110912323
+            "actual_time_visual": 21.692813396453857
         },
         {
-            "id": "9d06a542-7670-4355-9629-56cfb429ad4c",
+            "id": "1b068cbe-89b9-4141-9565-4aa5b87424ab",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 15.0,
-            "actual_time_visual": 40.23908710479736
+            "actual_time_visual": 23.03589701652527
         },
         {
-            "id": "93353a9a-e373-45bf-a6c6-fc3b9979445f",
+            "id": "8ba35989-8dfd-4dec-8aeb-08d95c9735b0",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 16.0,
-            "actual_time_visual": 41.38437509536743
+            "actual_time_visual": 23.816714763641357
         },
         {
-            "id": "bb515c20-ae73-46d5-aa73-8e09cff6cfc3",
+            "id": "093dcc37-61be-4f80-aaaf-1183689be3c9",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 17.0,
-            "actual_time_visual": 41.84704089164734
+            "actual_time_visual": 24.26041579246521
         },
         {
-            "id": "7df27f6c-565c-4a31-a7cd-bf3af70bce8e",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 20.4,
-            "actual_time_visual": 36.854416847229004
-        },
-        {
-            "id": "4ff1c252-879a-4edc-be0c-4e02f3724ebb",
+            "id": "94953b5d-e5cf-4d41-ad4d-090def9bf0b4",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 18.0,
-            "actual_time_visual": 41.84189772605896
+            "actual_time_visual": 24.32634449005127
         },
         {
-            "id": "003c520d-39e7-40c9-8c6a-3fa4a6d04021",
+            "id": "d2f21449-25fb-4d86-9d8a-51f93019037d",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 19.0,
-            "actual_time_visual": 41.578202962875366
+            "actual_time_visual": 24.17981719970703
         },
         {
-            "id": "0ad5f3fc-8c0e-4964-88b1-d1dcacfbe304",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 20.6,
-            "actual_time_visual": 37.36974239349365
-        },
-        {
-            "id": "55ba9832-b266-498c-83b5-3c74c759d587",
+            "id": "1206bd9e-53ee-4738-bed0-86e37fb5ffce",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 20.0,
-            "actual_time_visual": 40.98417377471924
+            "actual_time_visual": 23.64556574821472
         },
         {
-            "id": "d81d68b4-79ac-421a-a670-7e227bd0f477",
+            "id": "c0d0308f-65c3-4d53-a2cd-41f24ff2a8d6",
+            "path": "Route 2 (Bot)",
+            "estimated_time_at_spawn": 20.4,
+            "actual_time_visual": 23.425246715545654
+        },
+        {
+            "id": "ac56ff20-b23b-4804-be06-b576b2f6e5a0",
+            "path": "Route 2 (Bot)",
+            "estimated_time_at_spawn": 20.6,
+            "actual_time_visual": 23.616959810256958
+        },
+        {
+            "id": "c13169c1-2539-4562-a51a-77d95e5846dc",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 20.0,
+            "actual_time_visual": 21.525981664657593
+        },
+        {
+            "id": "e21eb5d3-c8a8-4aed-af59-4862d1540f94",
             "path": "Route 2 (Bot)",
             "estimated_time_at_spawn": 20.799999999999997,
-            "actual_time_visual": 37.83021664619446
+            "actual_time_visual": 23.731220960617065
         },
         {
-            "id": "a7416d37-5f9e-4730-9681-73f2022af908",
+            "id": "21276737-5726-4830-a7a2-488f55fb7e10",
             "path": "Route 1 (Top)",
             "estimated_time_at_spawn": 21.0,
-            "actual_time_visual": 37.895485162734985
+            "actual_time_visual": 21.129936456680298
         },
         {
-            "id": "8fdaba59-c943-48a7-b4d5-f33e5c66628c",
+            "id": "4dc1b2e4-573c-441d-8d6c-315c1ce4eb9d",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 20.652290105819702
+        },
+        {
+            "id": "ac6886cf-27c7-41d4-ab0f-f815fa8ae6ea",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 19.544034719467163
+        },
+        {
+            "id": "01ea5c75-b431-41a6-ac7c-60a15372c0ec",
             "path": "Route 2 (Bot)",
             "estimated_time_at_spawn": 21.0,
-            "actual_time_visual": 38.73406791687012
+            "actual_time_visual": 23.843822717666626
         },
         {
-            "id": "fe5fe6ad-87d6-4f32-b4e8-d0b44ed70138",
+            "id": "08491e9f-9d0e-4624-a726-e80525396101",
             "path": "Route 2 (Bot)",
             "estimated_time_at_spawn": 21.2,
-            "actual_time_visual": 39.03400182723999
+            "actual_time_visual": 23.80768656730652
         },
         {
-            "id": "66ddfc48-22bc-42a3-b384-712fcd9d651d",
+            "id": "c9ec718a-8f7c-45f9-b1b9-a47dfa472401",
             "path": "Route 1 (Top)",
-            "estimated_time_at_spawn": 22.0,
-            "actual_time_visual": 33.58692383766174
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 19.832521677017212
         },
         {
-            "id": "5ebbbdb4-cc6d-4d69-a6ed-1530022db97b",
+            "id": "3612afa6-d3c8-4873-a8ad-9ce82af8ff0b",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 20.063191413879395
+        },
+        {
+            "id": "91499457-889a-499b-be9f-1731cf746f2a",
             "path": "Route 2 (Bot)",
             "estimated_time_at_spawn": 21.4,
-            "actual_time_visual": 39.29010510444641
+            "actual_time_visual": 23.55360722541809
         },
         {
-            "id": "f974c67c-20fa-451f-8871-7998b836a74f",
-            "path": "Route 1 (Top)",
-            "estimated_time_at_spawn": 22.0,
-            "actual_time_visual": 32.31058621406555
-        },
-        {
-            "id": "99098f0a-e5cd-4a91-8795-2c16373554f7",
+            "id": "80598fcc-7d5c-441b-85a8-51fbdfd1fbce",
             "path": "Route 2 (Bot)",
             "estimated_time_at_spawn": 21.6,
-            "actual_time_visual": 39.424848318099976
+            "actual_time_visual": 23.30843949317932
         },
         {
-            "id": "4ce54c04-5b36-4b92-b570-967170a4335d",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 21.799999999999997,
-            "actual_time_visual": 39.47335433959961
-        },
-        {
-            "id": "5b9aaa1f-d44e-41c4-ba54-11ce65a0371d",
+            "id": "01fc44f0-4c46-4b0d-b6aa-4e5db5258d84",
             "path": "Route 1 (Top)",
-            "estimated_time_at_spawn": 22.0,
-            "actual_time_visual": 30.041874408721924
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 21.89396834373474
         },
         {
-            "id": "57af5ea6-b27a-43e9-ac11-91f2d69ddfca",
+            "id": "c61c6a81-7f66-4174-9c6b-11d101b3f799",
             "path": "Route 1 (Top)",
-            "estimated_time_at_spawn": 23.0,
-            "actual_time_visual": 28.65396785736084
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 22.785098552703857
         },
         {
-            "id": "8f90b20b-216a-4e6d-a1fe-5b6132a47ab6",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 22.0,
-            "actual_time_visual": 39.389612436294556
-        },
-        {
-            "id": "4e30cafe-5acf-4f4f-933c-e7f3c534cdb8",
+            "id": "e3c70934-94c5-480c-8aae-36244758cb88",
             "path": "Route 1 (Top)",
-            "estimated_time_at_spawn": 23.0,
-            "actual_time_visual": 26.86730694770813
+            "estimated_time_at_spawn": 20.0,
+            "actual_time_visual": 23.051786184310913
         },
         {
-            "id": "01b488f7-f6f1-47ec-a994-d898b4707d89",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 22.2,
-            "actual_time_visual": 39.11591958999634
+            "id": "177c127f-8c33-4fe4-a727-6ae1637ca487",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 22.824459314346313
         },
         {
-            "id": "d92dfa10-ea10-4a24-b165-baf2841d5e99",
+            "id": "ea38ba2b-dd85-4801-a3c8-52c1502573f6",
             "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 22.4,
-            "actual_time_visual": 38.93980169296265
+            "estimated_time_at_spawn": 21.4,
+            "actual_time_visual": 22.747023820877075
         },
         {
-            "id": "67603b30-6b67-40ed-96b6-92ec8691d9cc",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 22.6,
-            "actual_time_visual": 38.67974853515625
+            "id": "cc85c7b1-3ee9-4137-b4c3-05c5010c720e",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 21.788604497909546
         },
         {
-            "id": "50ba36bb-0938-48b9-88b5-6fdd24ab9c4c",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 22.8,
-            "actual_time_visual": 38.085017681121826
+            "id": "093e8bf7-2dd4-4b50-b253-d4c1d108a88e",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 20.0,
+            "actual_time_visual": 21.01431441307068
         },
         {
-            "id": "3313383a-6452-4030-a786-ebb34d8fd267",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 23.0,
-            "actual_time_visual": 37.36449074745178
-        },
-        {
-            "id": "336df00e-1939-4150-a9ca-793d5a4711c8",
-            "path": "Route 2 (Bot)",
-            "estimated_time_at_spawn": 23.200000000000003,
-            "actual_time_visual": 36.57755708694458
+            "id": "434f601f-ee59-463a-bc71-4fa9f020fcde",
+            "path": "Route 1 (Top)",
+            "estimated_time_at_spawn": 21.0,
+            "actual_time_visual": 19.98399519920349
         }
     ]
 }

@@ -167,7 +167,7 @@ class TrafficSimulation:
                     
                     cost = calculate_edge_cost(self.graph, current_edge_nodes[0], current_edge_nodes[1], edge_flow)
                     step = 1.0 / max(cost, 1.0) 
-                    step *= 0.01
+                    step *= 0.015
                     
                     v.progress += step
                     
